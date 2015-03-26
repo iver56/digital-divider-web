@@ -133,8 +133,8 @@
             this.text = new createjs.Text(this.value.toString(), Math.round(128 * scaleH).toString() + "px segoe ui", "white");
             this.text.scaleX = scaleW;
             this.text.scaleY = scaleH;
-            this.text.regX = this.text.getMeasuredWidth() * 0.5 * scaleW + 10 * scaleW;
-            this.text.regY = this.text.getMeasuredHeight() * 0.5 * scaleH + 30 * scaleH;
+            this.text.regX = this.text.getMeasuredWidth() * 0.5 * scaleW + 0 * scaleW;
+            this.text.regY = this.text.getMeasuredHeight() * 0.5 * scaleH + (window.innerWidth / window.innerHeight < 1.5 ? 10 * scaleH : 20 * scaleH);
             this.text.x = this.positionX;
             this.text.y = this.positionY;
             this.text.visible = false;
@@ -169,8 +169,8 @@
         this.text = new createjs.Text(this.value.toString(), Math.round(this.textSize * scaleH * 0.8).toString() + "px segoe ui", "white");
         this.text.scaleX = scaleW;
         this.text.scaleY = scaleH;
-        this.text.regX = this.text.getMeasuredWidth() * 0.5 * scaleW + 10 * scaleW;
-        this.text.regY = this.text.getMeasuredHeight() * 0.5 * scaleH + 20 * scaleH;
+        this.text.regX = this.text.getMeasuredWidth() * 0.5 * scaleW + 0 * scaleW;
+        this.text.regY = this.text.getMeasuredHeight() * 0.5 * scaleH + (window.innerWidth / window.innerHeight < 1.5 ? 5 * scaleH : 15 * scaleH);
         this.text.x = this.positionX;
         this.text.y = this.positionY;
 
@@ -484,6 +484,9 @@
                             highscoreNamesText.text += highscores[i].name + "\n";
                             highscoresText.text += highscores[i].score.toString() + "\n";
                         }
+                        if (!highscores.length) {
+                            highscorePositionsText.text = "There are no scores here yet";
+                        }
                         highscorePositionsText.visible = true;
                         highscoresText.visible = true;
                         highscoreNamesText.visible = true;
@@ -662,16 +665,6 @@
         canvas.addEventListener("MSPointerUp", pointerUp, false);
         canvas.addEventListener("MSPointerMove", pointerMove, false);
         canvas.addEventListener("MSPointerDown", pointerDown, false);
-        /*
-        var canv = document.createElement('canvas');
-        canv.id = 'canvas';
-        document.getElementById('gameArea').appendChild(canv);*/
-        /*
-        $("#canvas").width(window.innerWidth);
-        $("#canvas").height(window.innerHeight);
-        $("#gameArea").width(window.innerWidth);
-        $("#gameArea").height(window.innerHeight);
-        */
 
         menuBgImage = preload.getResult("menuBg").result;
         menuBgBitmap = new createjs.Bitmap(menuBgImage);
@@ -742,10 +735,9 @@
         gameOverBgBitmap.visible = false;
         stage.addChild(gameOverBgBitmap);
 
-
         trailBottomImage = preload.getResult("trailBottom").result;
         trailBottomBitmap1 = new createjs.Bitmap(trailBottomImage);
-        trailBottomBitmap1.scaleX = scaleW;
+        trailBottomBitmap1.scaleX = scaleW * 1.00000000000001;
         trailBottomBitmap1.scaleY = scaleH;
         trailBottomBitmap1.snapToPixel = true;
         trailBottomBitmap1.visible = false;
@@ -753,7 +745,7 @@
 
         trailMiddleImage = preload.getResult("trailMiddle").result;
         trailMiddleBitmap1 = new createjs.Bitmap(trailMiddleImage);
-        trailMiddleBitmap1.scaleX = scaleW;
+        trailMiddleBitmap1.scaleX = scaleW * 1.00000000000001;
         trailMiddleBitmap1.scaleY = scaleH;
         trailMiddleBitmap1.snapToPixel = true;
         trailMiddleBitmap1.visible = false;
@@ -761,28 +753,28 @@
 
         trailTopImage = preload.getResult("trailTop").result;
         trailTopBitmap1 = new createjs.Bitmap(trailTopImage);
-        trailTopBitmap1.scaleX = scaleW;
+        trailTopBitmap1.scaleX = scaleW * 1.00000000000001;
         trailTopBitmap1.scaleY = scaleH;
         trailTopBitmap1.snapToPixel = true;
         trailTopBitmap1.visible = false;
         stage.addChild(trailTopBitmap1);
 
         trailBottomBitmap2 = new createjs.Bitmap(trailBottomImage);
-        trailBottomBitmap2.scaleX = scaleW;
+        trailBottomBitmap2.scaleX = scaleW * 1.00000000000001;
         trailBottomBitmap2.scaleY = scaleH;
         trailBottomBitmap2.snapToPixel = true;
         trailBottomBitmap2.visible = false;
         stage.addChild(trailBottomBitmap2);
 
         trailMiddleBitmap2 = new createjs.Bitmap(trailMiddleImage);
-        trailMiddleBitmap2.scaleX = scaleH;
+        trailMiddleBitmap2.scaleX = scaleW * 1.00000000000001;
         trailMiddleBitmap2.scaleY = scaleH;
         trailMiddleBitmap2.snapToPixel = true;
         trailMiddleBitmap2.visible = false;
         stage.addChild(trailMiddleBitmap2);
 
         trailTopBitmap2 = new createjs.Bitmap(trailTopImage);
-        trailTopBitmap2.scaleX = scaleH;
+        trailTopBitmap2.scaleX = scaleW * 1.00000000000001;
         trailTopBitmap2.scaleY = scaleH;
         trailTopBitmap2.snapToPixel = true;
         trailTopBitmap2.visible = false;
@@ -865,11 +857,12 @@
         scoreText.visible = false;
         stage.addChild(scoreText);
 
-        gameOverScoreText = new createjs.Text("", Math.round(128 * scaleH).toString() + "px segoe ui", "white");
+        gameOverScoreText = new createjs.Text("", Math.round(110 * scaleH).toString() + "px segoe ui", "white");
         gameOverScoreText.x = 730 * scaleW;
         gameOverScoreText.y = 420 * scaleH;
         gameOverScoreText.scaleX = scaleW;
         gameOverScoreText.scaleY = scaleH;
+        gameOverScoreText.regY = (window.innerWidth / window.innerHeight < 1.5 ? 15 * scaleH : 0);
         gameOverScoreText.visible = false;
         stage.addChild(gameOverScoreText);
 

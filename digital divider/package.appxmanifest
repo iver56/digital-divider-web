@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="efb85169-5c48-46dd-808c-68715404b779" Version="1.0.0.0" Publisher="CN=Iver" />
+  <Identity Name="23953CtrlEscS.DigitalDivider" Version="1.0.0.1" Publisher="CN=D21E8554-F8DE-4A2B-9E0D-0E7FE52FDAC1" />
   <Properties>
     <DisplayName>Digital Divider</DisplayName>
     <PublisherDisplayName>Ctrl + Esc + S</PublisherDisplayName>
