@@ -63,3 +63,8 @@
 
 @media screen and (-ms-view-state: fullscreen-portrait) {
 }
+
+@-ms-viewport {
+  width: 1280px;
+  height: 800px;
+}

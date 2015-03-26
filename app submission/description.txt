@@ -1,0 +1,4 @@
+Digital Divider is a math game which is easy to learn, but difficult to master.
+Floating numbers cross the screen, and your job is to put them in the appropriate area before they reach the end of the screen. This is a test for both mind and dexterity. Can you beat your friends' highscores in this extremely addictive game?
+
+Digital Divider was created during a Microsoft Hackathon in Norway. Also, it was one of the finalists in the international game competition Dream.Build.Play 2012.

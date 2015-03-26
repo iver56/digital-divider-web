@@ -130,11 +130,13 @@
         this.value = value;
 
         if (this.value != null) {
-            this.text = new createjs.Text(this.value.toString(), Math.round(80 * scaleH).toString() + "px segoe ui", "white");
+            this.text = new createjs.Text(this.value.toString(), Math.round(128 * scaleH).toString() + "px segoe ui", "white");
             this.text.scaleX = scaleW;
             this.text.scaleY = scaleH;
-            this.text.x = this.positionX - 15 * scaleW;
-            this.text.y = this.positionY - 45 * scaleH;
+            this.text.regX = this.text.getMeasuredWidth() * 0.5 * scaleW + 10 * scaleW;
+            this.text.regY = this.text.getMeasuredHeight() * 0.5 * scaleH + 30 * scaleH;
+            this.text.x = this.positionX;
+            this.text.y = this.positionY;
             this.text.visible = false;
         }
 
@@ -155,20 +157,20 @@
         this.destinationY = null;
 
         if (this.value < 10) {
-            this.textSize = 50;
+            this.textSize = 100;
         }
         else if (this.value < 100) {
-            this.textSize = 40;
+            this.textSize = 80;
         }
         else {
-            this.textSize = 32;
+            this.textSize = 64;
         }
 
-        this.text = new createjs.Text(this.value.toString(), Math.round(this.textSize * scaleH).toString() + "px segoe ui", "white");
+        this.text = new createjs.Text(this.value.toString(), Math.round(this.textSize * scaleH * 0.8).toString() + "px segoe ui", "white");
         this.text.scaleX = scaleW;
         this.text.scaleY = scaleH;
-        this.text.regX = this.text.getMeasuredWidth() * 0.5 * scaleW;
-        this.text.regY = this.text.getMeasuredHeight() * 0.5 * scaleH;
+        this.text.regX = this.text.getMeasuredWidth() * 0.5 * scaleW + 10 * scaleW;
+        this.text.regY = this.text.getMeasuredHeight() * 0.5 * scaleH + 20 * scaleH;
         this.text.x = this.positionX;
         this.text.y = this.positionY;
 
@@ -322,7 +324,7 @@
                     waiting4UserInput = false;
                 }
             });
-            $("#aText").val(name);
+            $("#aText").val(name).attr('maxlength', '25').focus();
         }
     }
 
@@ -855,7 +857,7 @@
             twirlImages.push(twirlImage);
         }
 
-        scoreText = new createjs.Text("Score: 0", Math.round(40 * scaleH).toString() + "px segoe ui", "white");
+        scoreText = new createjs.Text("Score: 0", Math.round(64 * scaleH).toString() + "px segoe ui", "white");
         scoreText.x = 20 * scaleW;
         scoreText.y = 10 * scaleH;
         scoreText.scaleX = scaleW;
@@ -863,7 +865,7 @@
         scoreText.visible = false;
         stage.addChild(scoreText);
 
-        gameOverScoreText = new createjs.Text("", Math.round(80 * scaleH).toString() + "px segoe ui", "white");
+        gameOverScoreText = new createjs.Text("", Math.round(128 * scaleH).toString() + "px segoe ui", "white");
         gameOverScoreText.x = 730 * scaleW;
         gameOverScoreText.y = 420 * scaleH;
         gameOverScoreText.scaleX = scaleW;
@@ -871,7 +873,7 @@
         gameOverScoreText.visible = false;
         stage.addChild(gameOverScoreText);
 
-        highscorePositionsText = new createjs.Text("", Math.round(40 * scaleH).toString() + "px segoe ui", "white");
+        highscorePositionsText = new createjs.Text("", Math.round(64 * scaleH).toString() + "px segoe ui", "white");
         highscorePositionsText.x = 180 * scaleW;
         highscorePositionsText.y = 220 * scaleH;
         highscorePositionsText.scaleX = scaleW;
@@ -879,7 +881,7 @@
         highscorePositionsText.visible = false;
         stage.addChild(highscorePositionsText);
 
-        highscoreNamesText = new createjs.Text("", Math.round(40 * scaleH).toString() + "px segoe ui", "white");
+        highscoreNamesText = new createjs.Text("", Math.round(64 * scaleH).toString() + "px segoe ui", "white");
         highscoreNamesText.x = 290 * scaleW;
         highscoreNamesText.y = 220 * scaleH;
         highscoreNamesText.scaleX = scaleW;
@@ -887,7 +889,7 @@
         highscoreNamesText.visible = false;
         stage.addChild(highscoreNamesText);
 
-        highscoresText = new createjs.Text("", Math.round(40 * scaleH).toString() + "px segoe ui", "white");
+        highscoresText = new createjs.Text("", Math.round(64 * scaleH).toString() + "px segoe ui", "white");
         highscoresText.x = 1000 * scaleW;
         highscoresText.y = 220 * scaleH;
         highscoresText.scaleX = scaleW;
@@ -965,7 +967,7 @@
                     numbers.splice(k, 1);
                 }
                 else {
-                    if (distanceToNumberCenter(fieldRed.positionX, fieldRed.positionY, numbers[k].positionX, numbers[k].positionY) < 100 * scaleW && numberBeingDragged != numbers[k]) {
+                    if (distanceToNumberCenter(fieldRed.positionX, fieldRed.positionY, numbers[k].positionX, numbers[k].positionY) < 200 * scaleW && numberBeingDragged != numbers[k]) {
                         numbers[k].goesToDestination = true;
                         numbers[k].dropTime = now;
                         numbers[k].setDestinationField(fieldRed.positionX, fieldRed.positionY);
