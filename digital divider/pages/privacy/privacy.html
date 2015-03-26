@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>privacy</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+
+    <link href="privacy.css" rel="stylesheet" />
+    <script src="privacy.js"></script>
+</head>
+<body>
+    <div id="privacy" data-win-control="WinJS.UI.SettingsFlyout" data-win-options="{width: 'narrow'}">
+    <div class="SettingsPane">
+        <div class="win-label">
+            <button onclick="WinJS.UI.SettingsFlyout.show()" class="win-backbutton">
+            </button>
+            <span class="SettingsTitle">About</span>
+        </div>
+        <article class="SettingsContent">
+            <h2>Privacy Policy</h2>
+            <h4>The game does not collect, store or share any personal information, user data, or anything realted to your device. We do not collect any statistics, trends, neither do we track user movements. Highscores are saved only locally on your device.</h4>
+        </article>
+    </div>
+</div>
+</body>
+</html>
